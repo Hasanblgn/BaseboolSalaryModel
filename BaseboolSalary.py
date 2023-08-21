@@ -3,7 +3,7 @@ import numpy as np
 from Modeling import helpers
 import seaborn as sns
 import matplotlib.pyplot as plt
-from Modeling.CaseStudyModelling import helpers
+from Modeling.BaseboolSalaryModel import helpers
 import missingno as msno
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder, StandardScaler, RobustScaler
 from sklearn.linear_model import LinearRegression
@@ -32,7 +32,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, cross_val
 # Salary Oyuncunun 1986-1987 sezonunda aldığı maaş(bin uzerinden)
 # NewLeague 1987 sezonunun başında oyuncunun ligini gösteren A ve N seviyelerine sahip bir faktör
 
-df = pd.read_csv("Modeling/CaseStudyModelling/hitters.csv")
+df = pd.read_csv("Modeling/BaseboolSalaryModel/hitters.csv")
 df.head()
 
 
@@ -238,7 +238,7 @@ reg_model.score(X_test, y_test)
 # Cross Validation Process çapraz doğrulama
 
 np.mean(np.sqrt(-cross_val_score(reg_model, X, y, cv=10, scoring = "neg_mean_squared_error")))
-# 289.133
+# 289.133 veri setimizde az deger oldugu icin butun degerleri kullandik cross validation isleminde
 
 #smap = mean_absolute_error(y_train, y_pred) / y_train.mean()
 mean_absolute_error(y_train, y_pred) / y_train.mean() # %32 sapma
